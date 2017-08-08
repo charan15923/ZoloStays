@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView android:src="@drawable/lg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:theme="@style/Theme.AppCompat">
+            <EditText
+                android:id="@+id/input_phone"
+                android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_call_white_24dp"
+                android:drawablePadding="10dp"
+                android:textColor="#FFFF"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColorHint="@color/bt"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:hint="PHONE NUMBER"
+                android:background="@drawable/signup"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:theme="@style/Theme.AppCompat"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/white">
+            <EditText android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:background="@drawable/signup"
+                android:drawableLeft="@drawable/ic_vpn_key_white_24dp"
+                android:drawableStart="@drawable/ic_vpn_key_white_24dp"
+                android:drawablePadding="10dp"
+                android:textColor="#FFFF"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColorHint="@color/bt"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="PASSWORD"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:text="LOGIN"
+            android:enabled="false"
+            android:background="@color/bt"
+            />
+
+        <TextView android:id="@+id/link_forgot"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Forgot password?"
+            android:gravity="center"
+            android:textColor="#ffff"
+            android:textSize="16dip"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColor="#ffff"
+            android:text="CREATE ACCOUNT"
+            android:background="@drawable/signup"
+            />
+    </LinearLayout>
+</ScrollView>

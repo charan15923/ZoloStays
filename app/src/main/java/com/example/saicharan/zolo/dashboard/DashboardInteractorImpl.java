@@ -5,7 +5,6 @@ import android.util.Log;
 import android.util.Patterns;
 
 import com.example.saicharan.zolo.DatabaseHelper;
-import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.SessionManagement;
 
 /**

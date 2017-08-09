@@ -4,7 +4,6 @@ package com.example.saicharan.zolo.login;
 import android.util.Log;
 
 import com.example.saicharan.zolo.DatabaseHelper;
-import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.SessionManagement;
 
 /**

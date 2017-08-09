@@ -3,7 +3,6 @@ package com.example.saicharan.zolo.dagger.module;
 import android.content.Context;
 
 import com.example.saicharan.zolo.DatabaseHelper;
-import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.SessionManagement;
 
 import javax.inject.Singleton;

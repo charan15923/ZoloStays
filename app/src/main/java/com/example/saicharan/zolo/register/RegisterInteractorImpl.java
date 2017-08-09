@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import android.util.Patterns;
 
 import com.example.saicharan.zolo.DatabaseHelper;
-import com.example.saicharan.zolo.MyApp;
 
 /**
  * Created by NaNi on 07/08/17.

@@ -1,5 +1,6 @@
 package com.example.saicharan.zolo.dagger.component;
 
+import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.dagger.module.AppModule;
 
 import javax.inject.Singleton;

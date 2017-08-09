@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
@@ -18,7 +17,7 @@ android {
         }
     }
 }
-
+final DAGGER_VERSION = '2.11'
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -27,8 +26,14 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.+'
+
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'javax.inject:javax.inject:1'
+
     compile 'com.jakewharton:butterknife:8.8.0'
-    apt 'com.jakewharton:butterknife-compiler:8.8.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
     testCompile 'junit:junit:4.12'
     compile files('libs/activation.jar')

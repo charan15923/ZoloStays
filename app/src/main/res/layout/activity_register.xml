@@ -11,30 +11,25 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:descendantFocusability="beforeDescendants"
-        android:focusableInTouchMode="true">
+        android:paddingTop="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView android:id="@+id/link_dash_logout"
+            <TextView android:id="@+id/link_reg_login"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:textColor="#FFFF"
                 android:layout_marginRight="10dp"
-                android:text="LOG OUT"
+                android:text="LOG IN"
                 android:textSize="18dip"/>
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/welcome"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="WELCOME!"
-            android:textColor="#FFFF"
+            android:text="REGISTER"
             android:gravity="center"
             android:textSize="30dip"
             android:fontFamily="sans-serif"/>
@@ -43,8 +38,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textColor="#FFFF"
-            android:text="You can edit your details here"
+            android:text="Please register with Zolo to continue"
             android:gravity="center"
             android:fontFamily="sans-serif"
             android:textSize="16dip"/>
@@ -52,10 +46,10 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:theme="@style/Theme.AppCompat">
-            <EditText android:id="@+id/input_mobile_dash"
+            <EditText android:id="@+id/input_mobile_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_call_white_24dp"
@@ -67,16 +61,16 @@
                 android:inputType="number"
                 android:padding="10dp"
                 android:background="@drawable/signup"
-                android:hint="" />
+                android:hint="PHONE NUMBER" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:theme="@style/Theme.AppCompat">
-            <EditText android:id="@+id/input_email_dash"
+            <EditText android:id="@+id/input_email_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_email_white_24dp"
@@ -88,17 +82,17 @@
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:background="@drawable/signup"
-                android:hint="" />
+                android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:theme="@style/Theme.AppCompat">
-            <EditText android:id="@+id/input_name_dash"
+            <EditText android:id="@+id/input_name_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_person_outline_white_24dp"
@@ -110,21 +104,43 @@
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:background="@drawable/signup"
-                android:hint="" />
+                android:hint="Name" />
         </android.support.design.widget.TextInputLayout>
 
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:theme="@style/Theme.AppCompat"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/white">
+            <EditText android:id="@+id/input_password_reg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_vpn_key_white_24dp"
+                android:drawableStart="@drawable/ic_vpn_key_white_24dp"
+                android:drawablePadding="10dp"
+                android:textColor="#FFFF"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColorHint="@color/bt"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:background="@drawable/signup"
+                android:hint="Password"/>
+        </android.support.design.widget.TextInputLayout>
 
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_update"
+            android:id="@+id/btn_register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="UPDATE"
-            android:enabled="false"
+            android:text="REGISTER"
             android:textColor="#000000"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"

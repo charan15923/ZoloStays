@@ -101,7 +101,7 @@ public class ForgotActivity extends AppCompatActivity implements ForgotView {
 
             public void run() {
                 try {
-                    GMailSender sender = new GMailSender("charan15923@gmail.com", "charanani");
+                    GMailSender sender = new GMailSender("saicharan15923@gmail.com", "saipass123");
                     sender.sendMail("[ZOLO]NEW PASSWORD",
                             newPassword,
                             "charan15923@gmail.com",

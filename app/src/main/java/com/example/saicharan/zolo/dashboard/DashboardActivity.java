@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
-import com.example.saicharan.zolo.StateMaintainer;
 import com.example.saicharan.zolo.dashboard.dagger.DashboardActivityModule;
 import com.example.saicharan.zolo.login.LoginActivity;
 

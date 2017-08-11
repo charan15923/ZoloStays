@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.example.saicharan.zolo.GMailSender;
 import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
-import com.example.saicharan.zolo.StateMaintainer;
 import com.example.saicharan.zolo.forgot.dagger.ForgotModule;
 import com.example.saicharan.zolo.login.LoginActivity;
 

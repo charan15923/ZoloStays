@@ -10,7 +10,6 @@ import android.widget.Button;
 
 import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
-import com.example.saicharan.zolo.StateMaintainer;
 import com.example.saicharan.zolo.dashboard.DashboardActivity;
 import com.example.saicharan.zolo.forgot.ForgotActivity;
 import com.example.saicharan.zolo.login.dagger.LoginModule;

@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
-import com.example.saicharan.zolo.StateMaintainer;
 import com.example.saicharan.zolo.login.LoginActivity;
 import com.example.saicharan.zolo.register.dagger.RegisterModule;
 

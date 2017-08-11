@@ -6,7 +6,6 @@ package com.example.saicharan.zolo.forgot;
 
 public interface ForgotInteractor {
         interface onEmailSentListener{
-
             void onSuccess(String newpass);
             void onFailure(String message);
         }

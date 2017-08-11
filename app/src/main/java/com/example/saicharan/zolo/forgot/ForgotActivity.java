@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.saicharan.zolo.GMailSender;
+import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
 import com.example.saicharan.zolo.StateMaintainer;
+import com.example.saicharan.zolo.forgot.dagger.ForgotModule;
 import com.example.saicharan.zolo.login.LoginActivity;
 
 import java.util.UUID;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -27,31 +31,20 @@ import butterknife.OnTextChanged;
 public class ForgotActivity extends AppCompatActivity implements ForgotView {
     String email;
     String newpass;
-    private final StateMaintainer mStateMaintainer =
-            new StateMaintainer( getFragmentManager(), ForgotActivity.class.getName());
-    private ForgotPresenter mForgotPresenter;
+    @Inject
+    ForgotPresenter mForgotPresenter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot);
         ButterKnife.bind(this);
-        setupMVP();
-    }
-    private void setupMVP() {
-        if (mStateMaintainer.firstTimeIn()) {
-            ForgotPresenterImpl presenter = new ForgotPresenterImpl(this);
-            ForgotInteractorImpl model = new ForgotInteractorImpl(presenter);
-            presenter.setModel(model);
-            mStateMaintainer.put(presenter);
-            mStateMaintainer.put(model);
-            mForgotPresenter = presenter;
+        MyApp.get(this)
+                .getDataComponent()
+                .plus(new ForgotModule(this))
+                .inject(this);
 
-        }
-        else {
-            mForgotPresenter = mStateMaintainer.get(ForgotPresenterImpl.class.getName());
-            mForgotPresenter.setView(this);
-        }
     }
+
 
 
 

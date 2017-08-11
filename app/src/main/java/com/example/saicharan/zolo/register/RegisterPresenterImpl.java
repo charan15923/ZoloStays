@@ -1,5 +1,7 @@
 package com.example.saicharan.zolo.register;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 07/08/17.
  */
@@ -7,9 +9,10 @@ package com.example.saicharan.zolo.register;
 public class RegisterPresenterImpl implements RegisterPresenter,RegisterInteractor.onRegisterFinishedListener {
     RegisterView mRegisterView;
     RegisterInteractor mRegisterInteractor;
-    public RegisterPresenterImpl(RegisterView mRegisterView){
+    @Inject
+    public RegisterPresenterImpl(RegisterView mRegisterView,RegisterInteractorImpl registerInteractor){
         this.mRegisterView=mRegisterView;
-        mRegisterInteractor=new RegisterInteractorImpl(this);
+        this.mRegisterInteractor=registerInteractor;
     }
 
     @Override

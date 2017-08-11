@@ -3,9 +3,11 @@ package com.example.saicharan.zolo;
 import android.app.Application;
 import android.content.Context;
 
-import com.example.saicharan.zolo.dagger.component.AppComponent;
-import com.example.saicharan.zolo.dagger.module.AppModule;
-import com.example.saicharan.zolo.dashboard.DashboardInteractorImpl;
+
+import com.example.saicharan.zolo.dagger.AppModule;
+import com.example.saicharan.zolo.dagger.DaggerDataComponent;
+import com.example.saicharan.zolo.dagger.DataComponent;
+import com.example.saicharan.zolo.dagger.DataModule;
 
 import javax.inject.Inject;
 
@@ -15,31 +17,29 @@ import javax.inject.Inject;
 
 public class MyApp extends Application {
 
-    protected AppComponent appComponent;
-    private static MyApp instance;
-    @Inject
-    DashboardInteractorImpl dashboardInteractor;
+    private DataComponent mDataComponent;
+    private  static  Application instance;
 
-    public static MyApp getInstance() {
+    public static Context getContext() {
         return instance;
     }
 
-    public static Context getContext(){
-       // return (MyApp) context.getApplicationContext();
-          return instance.getApplicationContext();
+    public static MyApp get(Context context) {
+        return (MyApp) context.getApplicationContext();
     }
+
 
     @Override
     public void onCreate() {
-        instance = this;
+
         super.onCreate();
-        appComponent = DaggerAppComponent
-                .builder()
+        instance = this;
+        mDataComponent= DaggerDataComponent.builder()
                 .appModule(new AppModule(this))
-                .build();
-        appComponent.inject(this);
+                .dataModule(new DataModule()).build();
     }
-    public AppComponent getAppComponent(){
-        return appComponent;
+
+    public DataComponent getDataComponent(){
+        return mDataComponent;
     }
 }

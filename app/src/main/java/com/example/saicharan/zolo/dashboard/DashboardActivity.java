@@ -10,9 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
 import com.example.saicharan.zolo.StateMaintainer;
+import com.example.saicharan.zolo.dashboard.dagger.DashboardActivityModule;
 import com.example.saicharan.zolo.login.LoginActivity;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,9 +24,9 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
 public class DashboardActivity extends Activity implements DashboardView{
-    private final StateMaintainer mStateMaintainer =
-            new StateMaintainer( getFragmentManager(), DashboardActivity.class.getName());
-    private DashboardPresenter mDashboardPresenter;
+
+    @Inject
+    DashboardPresenter mDashboardPresenter;
     int id;
         String email,phn,name;
         String enableEmail,enablePhn,enableName;
@@ -37,23 +41,14 @@ public class DashboardActivity extends Activity implements DashboardView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         ButterKnife.bind(this);
-        setupMVP();
+        MyApp.get(this)
+                .getDataComponent()
+                .plus(new DashboardActivityModule(this))
+                .inject(this);
+        setUp();
     }
 
-    private void setupMVP() {
-        if (mStateMaintainer.firstTimeIn()) {
-            DashboardPresenterImpl presenter = new DashboardPresenterImpl(this);
-            DashboardInteractorImpl model = new DashboardInteractorImpl(presenter);
-            presenter.setModel(model);
-            mStateMaintainer.put(presenter);
-            mStateMaintainer.put(model);
-            mDashboardPresenter = presenter;
-
-        }
-        else {
-            mDashboardPresenter = mStateMaintainer.get(DashboardPresenterImpl.class.getName());
-            mDashboardPresenter.setView(this);
-        }
+    private void setUp() {
         if(mDashboardPresenter.loggedIn())
             mDashboardPresenter.getData();
         else{

@@ -8,9 +8,13 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 
+import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
 import com.example.saicharan.zolo.StateMaintainer;
 import com.example.saicharan.zolo.login.LoginActivity;
+import com.example.saicharan.zolo.register.dagger.RegisterModule;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,32 +26,20 @@ import butterknife.OnTextChanged;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterView{
     String email,phone,pass,name;
-    private RegisterPresenter mRegisterPresenter;
-    private final StateMaintainer mStateMaintainer =
-            new StateMaintainer( getFragmentManager(), RegisterActivity.class.getName());
+    @Inject
+    RegisterPresenter mRegisterPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-        setupMVP();
+        MyApp.get(this)
+                .getDataComponent()
+                .plus(new RegisterModule(this))
+                .inject(this);
     }
 
-    private void setupMVP() {
-        if (mStateMaintainer.firstTimeIn()) {
-            RegisterPresenterImpl presenter = new RegisterPresenterImpl(this);
-            RegisterInteractorImpl model = new RegisterInteractorImpl(presenter);
-            presenter.setModel(model);
-            mStateMaintainer.put(presenter);
-            mStateMaintainer.put(model);
-            mRegisterPresenter = presenter;
-
-        }
-        else {
-            mRegisterPresenter = mStateMaintainer.get(RegisterPresenterImpl.class.getName());
-            mRegisterPresenter.setView(this);
-        }
-    }
 
     @OnClick(R.id.btn_register)
     void submitButton(View view) {

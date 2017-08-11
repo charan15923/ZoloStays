@@ -6,6 +6,8 @@ import android.util.Patterns;
 import com.example.saicharan.zolo.DatabaseHelper;
 import com.example.saicharan.zolo.SessionManagement;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 07/08/17.
  */
@@ -16,10 +18,11 @@ public class ForgotInteractorImpl implements ForgotInteractor {
     private final SessionManagement sManager;
     ForgotPresenterImpl mForgotPresenter;
 
-    public ForgotInteractorImpl(ForgotPresenterImpl mLoginPresenter){
-        this.mForgotPresenter=mLoginPresenter;
-        dHelper = new DatabaseHelper(MyApp.getContext());
-        sManager= new SessionManagement(MyApp.getContext());
+    @Inject
+    public ForgotInteractorImpl(DatabaseHelper dHelper,SessionManagement sManager){
+
+        this.dHelper=dHelper;
+        this.sManager=sManager;
     }
     @Override
     public void forgot(String phone,String newpass, onEmailSentListener listener) {

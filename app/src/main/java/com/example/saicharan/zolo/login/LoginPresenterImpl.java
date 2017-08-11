@@ -3,6 +3,8 @@ package com.example.saicharan.zolo.login;
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 06/08/17.
  */
@@ -11,9 +13,10 @@ public class LoginPresenterImpl implements LoginPresenter,LoginInteractor.onLogi
      LoginView mLoginView;
     LoginInteractor mLoginInteractor;
 
-    public LoginPresenterImpl(LoginView mLoginView){
+    @Inject
+    public LoginPresenterImpl(LoginView mLoginView,LoginInteractorImpl loginInteractor){
         this.mLoginView=mLoginView;
-        mLoginInteractor= new LoginInteractorImpl(this);
+        this.mLoginInteractor=loginInteractor;
     }
     @Override
     public void validateCred(String phone, String password) {
@@ -41,12 +44,7 @@ public class LoginPresenterImpl implements LoginPresenter,LoginInteractor.onLogi
 
     @Override
     public void validatePhn(String phnData) {
-       if(!TextUtils.isEmpty(phnData) && phnData.length()==10) {
-            mLoginView.enableButton(true);
-        }
-        else{
-           mLoginView.enableButton(false);
-       }
+
     }
 
     @Override

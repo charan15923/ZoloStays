@@ -6,6 +6,8 @@ import android.util.Log;
 import com.example.saicharan.zolo.DatabaseHelper;
 import com.example.saicharan.zolo.SessionManagement;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 06/08/17.
  */
@@ -14,12 +16,12 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     private final DatabaseHelper dHelper;
     private final SessionManagement sManager;
-    LoginPresenterImpl mLoginPresenter;
 
-    public LoginInteractorImpl(LoginPresenterImpl mLoginPresenter){
-        this.mLoginPresenter=mLoginPresenter;
-        dHelper = new DatabaseHelper(MyApp.getContext());
-        sManager= new SessionManagement(MyApp.getContext());
+
+    @Inject
+    public LoginInteractorImpl(DatabaseHelper dHelper,SessionManagement sManager){
+        this.dHelper=dHelper;
+        this.sManager=sManager;
     }
     @Override
     public void login(String phone, String password, onLoginFinishedListener listener) {

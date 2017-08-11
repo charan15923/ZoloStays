@@ -1,5 +1,7 @@
 package com.example.saicharan.zolo.forgot;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 07/08/17.
  */
@@ -7,9 +9,11 @@ package com.example.saicharan.zolo.forgot;
 public class ForgotPresenterImpl implements ForgotPresenter,ForgotInteractor.onEmailSentListener {
     ForgotView mForgotView;
     ForgotInteractor mForgotInteractor;
-    public ForgotPresenterImpl(ForgotView mForgotView){
+
+    @Inject
+    public ForgotPresenterImpl(ForgotView mForgotView,ForgotInteractorImpl forgotInteractor){
         this.mForgotView=mForgotView;
-        mForgotInteractor=new ForgotInteractorImpl(this);
+        this.mForgotInteractor=forgotInteractor;
     }
     @Override
     public void validateCred(String phone,String newpass) {

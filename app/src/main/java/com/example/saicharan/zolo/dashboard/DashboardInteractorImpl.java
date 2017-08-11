@@ -7,6 +7,8 @@ import android.util.Patterns;
 import com.example.saicharan.zolo.DatabaseHelper;
 import com.example.saicharan.zolo.SessionManagement;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 08/08/17.
  */
@@ -15,12 +17,12 @@ public class DashboardInteractorImpl implements DashboardInteractor {
 
     private final DatabaseHelper dHelper;
     private final SessionManagement sManager;
-    DashboardPresenterImpl mDashboardPresenter;
 
-    public DashboardInteractorImpl(DashboardPresenterImpl mDashboardPresenter){
-        this.mDashboardPresenter=mDashboardPresenter;
-        dHelper = new DatabaseHelper(MyApp.getContext());
-        sManager= new SessionManagement(MyApp.getContext());
+
+    @Inject
+    public DashboardInteractorImpl(DatabaseHelper dHelper,SessionManagement sManager){
+       this.dHelper=dHelper;
+        this.sManager=sManager;
     }
     @Override
     public void update(int id, String phone, String email, String name, onUpdateListener listener) {

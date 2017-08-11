@@ -1,5 +1,7 @@
 package com.example.saicharan.zolo.dashboard;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 08/08/17.
  */
@@ -7,9 +9,10 @@ package com.example.saicharan.zolo.dashboard;
 public class DashboardPresenterImpl implements DashboardPresenter,DashboardInteractor.onUpdateListener {
     DashboardView mDashboardView;
     DashboardInteractor mDashboardInteractor;
-    public DashboardPresenterImpl(DashboardView mDashboardView){
+    @Inject
+    public DashboardPresenterImpl(DashboardView mDashboardView,DashboardInteractorImpl dashboardInteractor){
         this.mDashboardView=mDashboardView;
-        mDashboardInteractor=new DashboardInteractorImpl(this);
+        this.mDashboardInteractor=dashboardInteractor;
     }
     @Override
     public void onSuccess(String msg) {

@@ -5,18 +5,19 @@ import android.util.Patterns;
 
 import com.example.saicharan.zolo.DatabaseHelper;
 
+import javax.inject.Inject;
+
 /**
  * Created by NaNi on 07/08/17.
  */
 
 public class RegisterInteractorImpl implements RegisterInteractor {
     private final DatabaseHelper dHelper;
-    RegisterPresenterImpl mRegisterPresenterImpl;
 
-    public RegisterInteractorImpl(RegisterPresenterImpl mRegisterPresenterImpl){
-        this.mRegisterPresenterImpl=mRegisterPresenterImpl;
-        dHelper=new DatabaseHelper(MyApp.getContext());
-//
+    @Inject
+    public RegisterInteractorImpl(DatabaseHelper dHelper){
+       this.dHelper=dHelper;
+
     }
     @Override
     public void register(String phone, String name, String email,String password, onRegisterFinishedListener listener) {

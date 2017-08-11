@@ -8,11 +8,15 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.saicharan.zolo.MyApp;
 import com.example.saicharan.zolo.R;
 import com.example.saicharan.zolo.StateMaintainer;
 import com.example.saicharan.zolo.dashboard.DashboardActivity;
 import com.example.saicharan.zolo.forgot.ForgotActivity;
+import com.example.saicharan.zolo.login.dagger.LoginModule;
 import com.example.saicharan.zolo.register.RegisterActivity;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,9 +32,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @BindView(R.id.btn_login)Button login;
     int i=0;
-    private LoginPresenter mLoginPresenter;
-    private final StateMaintainer mStateMaintainer =
-            new StateMaintainer( getFragmentManager(), LoginActivity.class.getName());
+
+    @Inject
+    LoginPresenter mLoginPresenter;
+
+
     String phnData,passData;
 
     @Override
@@ -38,23 +44,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        setupMVP();
-    }
-
-    private void setupMVP() {
-        if (mStateMaintainer.firstTimeIn()) {
-            LoginPresenterImpl presenter = new LoginPresenterImpl(this);
-            LoginInteractorImpl model = new LoginInteractorImpl(presenter);
-            presenter.setModel(model);
-            mStateMaintainer.put(presenter);
-            mStateMaintainer.put(model);
-            mLoginPresenter = presenter;
-
-        }
-        else {
-            mLoginPresenter = mStateMaintainer.get(LoginPresenterImpl.class.getName());
-            mLoginPresenter.setView(this);
-        }
+        MyApp.get(this)
+                .getDataComponent()
+                .plus(new LoginModule(this))
+                .inject(this);
     }
 
     @OnClick({R.id.btn_login , R.id.btn_signup, R.id.link_forgot})
@@ -104,19 +97,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void enableButton(Boolean msg) {
-       if(msg){
-           i++;
-           if(i % 2 == 0)
-               login.setEnabled(true);
-           else
-               login.setEnabled(false);
-       }else{
-           i--;
-           if(i % 2 == 0)
-               login.setEnabled(true);
-           else
-               login.setEnabled(false);
-       }
+     login.setEnabled(msg);
     }
 
     @Override
